@@ -1,0 +1,34 @@
+/* styles/Home.module.css */
+
+.container * {
+  position: relative; /* Ensure pseudo-elements are positioned relative to parent */
+  margin: 3em 0;
+  padding: 0.2em;
+}
+
+/* Common styles for both ::before and ::after */
+.container *::before,
+.container *::after {
+  position: absolute;
+  left: 0;
+
+  font-size: 0.9em;
+  filter: blur(1.5px); /* Apply blur effect */
+  z-index: -1; /* Position behind the content */
+}
+
+/* Specific styles for ::before */
+.container *::before {
+  content: "<" attr(data-tag) ">";
+  color: lightgreen;
+  top: 0;
+  transform: translateY(-100%); /* Position above the element */
+}
+
+/* Specific styles for ::after */
+.container *::after {
+  content: "</" attr(data-tag) ">";
+  color: lightcoral;
+  bottom: 0;
+  transform: translateY(100%); /* Position below the element */
+}
